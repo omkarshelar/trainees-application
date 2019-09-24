@@ -1,1 +1,25 @@
-<p>trainee-overview works!</p>
+<div class="container ml-0 mt-5">
+
+    <nav class="navbar navbar-expand-lg bg-info">
+        <a class="navbar-brand text-light">Trainees List</a>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <button (click)="add()" class="btn btn-success float-right">Add New Trainee</button>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container mt-5 pt-5">
+
+        <table border="1">
+            <tr *ngFor="let student of students">
+                <td>{{ student.firstName }}</td>
+                <td>{{ student.lastName }}</td>
+                <td>{{ student.email }}</td>
+                <td>{{ student.phone }}</td>
+            </tr>
+        </table>
+
+    </div>
+
+</div>
