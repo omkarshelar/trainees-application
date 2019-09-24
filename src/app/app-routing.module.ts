@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { LoginComponent } from './login/login.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
-import { TraineeOverviewComponent } from './trainee-overview/trainee-overview.component';
-import { TraineeDetailsComponent } from './trainee-details/trainee-details.component';
+import { TraineeOverviewComponent } from './components/trainee-overview/trainee-overview.component';
+import { TraineeDetailsComponent } from './components/trainee-details/trainee-details.component';
 
 const routes: Routes = [
   {
