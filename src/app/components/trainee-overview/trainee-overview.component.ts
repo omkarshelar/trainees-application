@@ -20,4 +20,10 @@ export class TraineeOverviewComponent implements OnInit {
     
   }
 
+  deleteTrainee(email) {
+    this.studentServiceObj.deleteStudent(email);
+    this.students = this.studentServiceObj.getStudents();
+    //Code for success toaster
+  }
+
 }

@@ -11,9 +11,9 @@ export class AuthService implements CanActivate {
   }
   
 
-  authenticateUser(userEmail, userPassword) {
-    if(userEmail==='admin@mail.com' && userPassword==='abc123') {
-      localStorage.setItem('userData',userEmail);
+  authenticateUser(loginForm) {
+    if(loginForm.value.email==='admin@mail.com' && loginForm.value.password==='Abc@123') {
+      localStorage.setItem('userData',JSON.stringify(loginForm.value));
       return true;
     }
     else {
@@ -26,7 +26,7 @@ export class AuthService implements CanActivate {
   }
 
   isLoggedIn() {
-    if(localStorage.getItem('userData') === 'admin@mail.com') {
+    if(localStorage.getItem('userData')) {
       return true;
     }
     else {

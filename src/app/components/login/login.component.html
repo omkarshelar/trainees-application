@@ -1,1 +1,32 @@
-<p>login works!</p>
+<div class="container shadow mt-5 d-flex justify-content-center align-items-center flex-column vertical-center"> 
+    <div class="container mb-5 mt-5">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <div class="text-center">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxbFzBPywueBKSmmsAkdLoGWaOic2TgATNQedlkpCJvYxx9dN8" class="logo">
+                    </div>
+                
+                    <label class="w3-text-blue"><b>Email</b></label><br>
+                            <input class="w3-input w3-border" type="email" formControlName="email">
+                            <div *ngIf="loginForm.controls['email'].hasError('required') && loginForm.controls['email'].touched" class="bg-danger mt-2 text-light"> Email address is required</div>
+                            <div *ngIf="!loginForm.controls['email'].hasError('required') && loginForm.controls['email'].invalid" class="bg-danger mt-2 text-light">Email is invalid</div>
+                            <label class="w3-text-blue"><b>Password</b></label><br>
+                            <input class="w3-input w3-border" type="password" formControlName="password">
+                    <div *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched" class="bg-danger mt-2 text-light">Password is required</div>
+                    <div *ngIf="!loginForm.controls['password'].hasError('required') && loginForm.controls['password'].invalid" class="bg-danger mt-2 text-light">Password should contain atleast <br>
+                    - One UpperCase letter<br>
+                    - One LowerCase letter<br>
+                    - Special characters<br>
+                    - One digit<br>
+                    -Should be atleast 6 characters<br></div>
+                
+                    <button class="w3-btn w3-green mt-2" type="submit" [disabled]="!loginForm.valid">Login</button>
+                
+                    </form>
+    </div>
+
+    <div class="container w3-gray mb-5">
+        <h4>Notes : </h4><br>
+        <p>Credentials : admin@mail.com Password: admin123</p><br>
+        <p>All data will be restored when refreshed</p><br>
+    </div>
+</div>

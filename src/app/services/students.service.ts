@@ -9,6 +9,7 @@ export class StudentsService {
   students:Student[];
   constructor() { 
     this.students = JSON.parse(localStorage.getItem("students_list")) || STUDENTS_LIST;
+    this.writeToLocalStorage();
   }
 
   writeToLocalStorage() {
@@ -21,6 +22,16 @@ export class StudentsService {
 
   addStudent(newStudent:Student) {
     this.students.push(newStudent);
+    this.writeToLocalStorage();
+  }
+
+  deleteStudent(email) {
+    this.students = this.students.filter((student)=>student.email!=email);
+    this.writeToLocalStorage();
+  }
+
+  deleteStudentsDB() {
+    localStorage.removeItem("students_list");
   }
 
 }

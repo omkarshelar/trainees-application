@@ -1,0 +1,15 @@
+align-center{
+    width: 40%;
+    margin: auto;
+}
+.login-card{
+    margin-top:20%;
+    border-radius: 15px;
+}
+
+.vertical-center {
+  min-height: 70%;  /* Fallback for browsers do NOT support vh unit */
+
+  display: flex;
+  align-items: center;
+}
