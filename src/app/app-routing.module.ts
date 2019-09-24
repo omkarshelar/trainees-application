@@ -8,17 +8,17 @@ import { TraineeDetailsComponent } from './trainee-details/trainee-details.compo
 
 const routes: Routes = [
   {
+    path:'login',
+    component:LoginComponent
+  },
+  {
     path:'',
     component:SidebarComponent,
     canActivate:[AuthService],
     children:[
-      //{path:'',component:TraineeOverviewComponent},
-      //{path:':id',component:TraineeDetailsComponent}
+      {path:'',component:TraineeOverviewComponent},
+      {path:':id',component:TraineeDetailsComponent}
     ]
-  },
-  {
-    path:'login',
-    component:LoginComponent
   }
 ];
 
