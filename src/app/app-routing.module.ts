@@ -17,7 +17,7 @@ const routes: Routes = [
     canActivate:[AuthService],
     children:[
       {path:'',component:TraineeOverviewComponent},
-      {path:':id',component:TraineeDetailsComponent}
+      {path:':id',component:TraineeDetailsComponent},
     ]
   }
 ];
