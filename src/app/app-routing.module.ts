@@ -1,8 +1,26 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './services/auth.service';
+import { TraineeOverviewComponent } from './trainee-overview/trainee-overview.component';
+import { TraineeDetailsComponent } from './trainee-details/trainee-details.component';
 
-
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path:'',
+    component:SidebarComponent,
+    canActivate:[AuthService],
+    children:[
+      //{path:'',component:TraineeOverviewComponent},
+      //{path:':id',component:TraineeDetailsComponent}
+    ]
+  },
+  {
+    path:'login',
+    component:LoginComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
