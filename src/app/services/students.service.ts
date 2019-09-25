@@ -27,8 +27,8 @@ export class StudentsService {
     this.students.push(newStudent);
     this.writeToLocalStorage();
   }
-  getLatestId() {
-    let maxId = this.students.reduce((max, currentValue)=>max>currentValue.id?max:currentValue.id);
+  getLatestId():number {
+    let maxId:number = this.students.reduce((max, currentValue)=>max>currentValue.id?max:currentValue.id, -1);
     return maxId+1;
   }
 
