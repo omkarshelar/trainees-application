@@ -4,6 +4,7 @@ import { RouterModule ,Routes, Router} from "@angular/router";
 import { StudentsService } from '../../services/students.service';
 import { Student } from '../../mock-students';
 import { ActivatedRoute } from '@angular/router';
+import { ConfigService } from '../../services/config.service';
 
 @Component({
   selector: 'app-add-update',
@@ -18,7 +19,6 @@ export class AddUpdateComponent implements OnInit {
   btnName:string = "Add";
   constructor(private studentServiceObj:StudentsService, private route: ActivatedRoute) {
     this.id = this.route.snapshot.params['id'];
-    // console.log(this.id);
   }
 
   ngOnInit() {
@@ -34,8 +34,8 @@ export class AddUpdateComponent implements OnInit {
     this.UserForms = new FormGroup({
       FirstName: new FormControl(this.oldStudent.firstName,[Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
       LastName: new FormControl(this.oldStudent.lastName,[Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
-      email: new FormControl(this.oldStudent.email,[Validators.required, Validators.email]),
-      phone: new FormControl(this.oldStudent.phone,[Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
+      email: new FormControl(this.oldStudent.email,[Validators.required, ConfigService.validateEmail]),
+      phone: new FormControl(this.oldStudent.phone,[Validators.required,ConfigService.validatePhone]),
     });
   }
 

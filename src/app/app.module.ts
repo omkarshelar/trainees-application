@@ -9,6 +9,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TraineeOverviewComponent } from './components/trainee-overview/trainee-overview.component';
 import { TraineeDetailsComponent } from './components/trainee-details/trainee-details.component';
 import { AddUpdateComponent } from './components/add-update/add-update.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,13 @@ import { AddUpdateComponent } from './components/add-update/add-update.component
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 2000,
+      positionClass: 'toast-bottom-right',
+     // preventDuplicates: true,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
