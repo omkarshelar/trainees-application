@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StudentsService } from '../../services/students.service';
-import { Student } from '../../mock-students'
+import { Student } from '../../mock-students';
 
 @Component({
   selector: 'app-trainee-overview',
@@ -20,10 +20,14 @@ export class TraineeOverviewComponent implements OnInit {
     
   }
 
-  deleteTrainee(email) {
-    this.studentServiceObj.deleteStudent(email);
+  deleteTrainee(id) {
+    this.studentServiceObj.deleteStudent(id);
     this.students = this.studentServiceObj.getStudents();
     //Code for success toaster
+  }
+
+  updateTrainee(id) {
+    this.router.navigate(['/update',id]);
   }
 
 }

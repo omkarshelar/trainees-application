@@ -16,7 +16,10 @@ export class StudentsService {
     localStorage.setItem("students_list",JSON.stringify(this.students))
   }
 
-  getStudents() {
+  getStudents(id?:number) {
+    if(typeof id !== 'undefined') {
+      return this.students.filter((element:Student)=>element.id == id);
+    }
     return this.students;
   }
 
@@ -24,14 +27,27 @@ export class StudentsService {
     this.students.push(newStudent);
     this.writeToLocalStorage();
   }
+  getLatestId() {
+    let maxId = this.students.reduce((max, currentValue)=>max>currentValue.id?max:currentValue.id);
+    return maxId+1;
+  }
 
-  deleteStudent(email) {
-    this.students = this.students.filter((student)=>student.email!=email);
+  deleteStudent(id:number) {
+    this.students = this.students.filter((student)=>student.id!=id);
     this.writeToLocalStorage();
   }
 
   deleteStudentsDB() {
     localStorage.removeItem("students_list");
+  }
+
+  updateStudent(id:number, firstName:string, lastName:string, email:string, phone:number) {
+    let oldStudent = this.students.filter((student)=>student.id==id)[0];
+    oldStudent.firstName = firstName;
+    oldStudent.lastName = lastName;
+    oldStudent.email = email;
+    oldStudent.phone = phone;
+    this.writeToLocalStorage();
   }
 
 }

@@ -4,7 +4,7 @@
         <a class="navbar-brand text-light">Trainees List</a>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <button (click)="add()" class="btn btn-success float-right">Add New Trainee</button>
+                <button [routerLink]="['/add']" class="btn btn-success float-right">Add New Trainee</button>
             </li>
         </ul>
     </nav>
@@ -31,8 +31,8 @@
                 <td>{{ student.lastName }}</td>
                 <td>{{ student.email }}</td>
                 <td>{{ student.phone }}</td>
-                <td><button type="button" class="btn btn-success">Update</button></td>
-                <td><button type="button" class="btn btn-danger" (click)="deleteTrainee(student.email)">Delete</button></td>
+                <td><button type="button" class="btn btn-success" (click)="updateTrainee(student.id)">Update</button></td>
+                <td><button type="button" class="btn btn-danger" (click)="deleteTrainee(student.id)">Delete</button></td>
             </tr>
         </table>
 

@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
 import { TraineeOverviewComponent } from './components/trainee-overview/trainee-overview.component';
 import { TraineeDetailsComponent } from './components/trainee-details/trainee-details.component';
+import { AddUpdateComponent } from './components/add-update/add-update.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,9 @@ const routes: Routes = [
     canActivate:[AuthService],
     children:[
       {path:'',component:TraineeOverviewComponent},
-      {path:':id',component:TraineeDetailsComponent},
+      {path:'details/:id',component:TraineeDetailsComponent},
+      {path:'add',component:AddUpdateComponent},
+      {path:'update/:id',component:AddUpdateComponent},
     ]
   }
 ];

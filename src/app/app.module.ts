@@ -8,6 +8,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TraineeOverviewComponent } from './components/trainee-overview/trainee-overview.component';
 import { TraineeDetailsComponent } from './components/trainee-details/trainee-details.component';
+import { AddUpdateComponent } from './components/add-update/add-update.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { TraineeDetailsComponent } from './components/trainee-details/trainee-de
     LoginComponent,
     SidebarComponent,
     TraineeOverviewComponent,
-    TraineeDetailsComponent
+    TraineeDetailsComponent,
+    AddUpdateComponent
   ],
   imports: [
     BrowserModule,
