@@ -15,27 +15,35 @@
             <label id="iconLabel"><i class="fa fa-search" aria-hidden="true"></i>Search:</label>
             <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchQuery">
         </div>
-        <table>
-                <tr>
-                        <th><i class="w3-medium custom-icon fa fa-refresh"></i> Sr. No.</th>
-                        <th><i class="w3-medium custom-icon fa fa-user"></i> First Name</th>
-                        <th><i class="w3-medium custom-icon fa fa-user"></i> Last Name</th>
-                        <th><i class="w3-medium custom-icon fa fa-envelope-o"></i> Email</th>
-                        <th><i class="w3-medium custom-icon fa fa-phone"></i> Phone</th>
-                        <th><i class="w3-medium custom-icon fa fa-pencil"></i> Update</th>
-                        <th><i class="w3-medium custom-icon fa fa-trash"></i> Delete</th>
+        <div *ngIf="(students | search:searchQuery) as students">
+            <div *ngIf="students.length">
+                <table>
+                        <tr>
+                                <th><i class="w3-medium custom-icon fa fa-refresh"></i> Sr. No.</th>
+                                <th><i class="w3-medium custom-icon fa fa-user"></i> First Name</th>
+                                <th><i class="w3-medium custom-icon fa fa-user"></i> Last Name</th>
+                                <th><i class="w3-medium custom-icon fa fa-envelope-o"></i> Email</th>
+                                <th><i class="w3-medium custom-icon fa fa-phone"></i> Phone</th>
+                                <th><i class="w3-medium custom-icon fa fa-pencil"></i> Update</th>
+                                <th><i class="w3-medium custom-icon fa fa-trash"></i> Delete</th>
+                            </tr>
+                    <tr *ngFor="let student of students;let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{ student.firstName }}</td>
+                        <td>{{ student.lastName }}</td>
+                        <td>{{ student.email }}</td>
+                        <td>{{ student.phone | phone }}</td>
+                        <td><button type="button" class="btn btn-success" (click)="updateTrainee(student.id)">Update</button></td>
+                        <td><button type="button" class="btn btn-danger" (click)="deleteHandler(student.id)">Delete</button></td>
                     </tr>
-            <tr *ngFor="let student of students | search:searchQuery ;let i = index">
-                <td>{{i+1}}</td>
-                <td>{{ student.firstName }}</td>
-                <td>{{ student.lastName }}</td>
-                <td>{{ student.email }}</td>
-                <td>{{ student.phone | phone }}</td>
-                <td><button type="button" class="btn btn-success" (click)="updateTrainee(student.id)">Update</button></td>
-                <td><button type="button" class="btn btn-danger" (click)="deleteHandler(student.id)">Delete</button></td>
-            </tr>
-        </table>
-
+                </table>
+            </div>
+            <div *ngIf="!students.length">
+                <div class="alert alert-success">
+                    <strong>No Results!</strong><br>No results found for query {{ searchQuery }}
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>

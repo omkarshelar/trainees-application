@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./trainee-overview.component.css']
 })
 export class TraineeOverviewComponent implements OnInit {
-
+  public showTable:boolean = true;
   students:Student[];
   searchQuery = "";
   constructor(private studentServiceObj:StudentsService, private router:Router, private toastr: ToastrService) { }
@@ -18,8 +18,9 @@ export class TraineeOverviewComponent implements OnInit {
   ngOnInit() {
     this.students = this.studentServiceObj.getStudents();
   }
-  add() {
-    
+  
+  setShowTable(value:boolean) {
+    this.showTable = value;
   }
 
   deleteHandler(id) {

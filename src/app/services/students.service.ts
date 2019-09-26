@@ -39,6 +39,7 @@ export class StudentsService {
 
   deleteStudentsDB() {
     localStorage.removeItem("students_list");
+    this.students = STUDENTS_LIST;
   }
 
   updateStudent(id:number, firstName:string, lastName:string, email:string, phone:number) {
