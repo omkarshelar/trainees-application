@@ -7,6 +7,25 @@ import { TraineeOverviewComponent } from './components/trainee-overview/trainee-
 import { TraineeDetailsComponent } from './components/trainee-details/trainee-details.component';
 import { AddUpdateComponent } from './components/add-update/add-update.component';
 
+
+const childRoutes = [
+  {
+    path:'',
+    component:TraineeOverviewComponent
+  },
+  {
+    path:'details/:id',
+    component:TraineeDetailsComponent
+  },
+  {
+    path:'add',
+    component:AddUpdateComponent
+  },
+  {
+    path:'update/:id',
+    component:AddUpdateComponent
+  },
+]
 const routes: Routes = [
   {
     path:'login',
@@ -16,12 +35,11 @@ const routes: Routes = [
     path:'',
     component:SidebarComponent,
     canActivate:[AuthService],
-    children:[
-      {path:'',component:TraineeOverviewComponent},
-      {path:'details/:id',component:TraineeDetailsComponent},
-      {path:'add',component:AddUpdateComponent},
-      {path:'update/:id',component:AddUpdateComponent},
-    ]
+    children: childRoutes
+  },
+  {
+    path: '**',
+    redirectTo:'/',
   }
 ];
 

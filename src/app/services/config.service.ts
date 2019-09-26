@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
+import { trigger, state, animate, style, transition } from '@angular/animations';
 
 @Injectable({
   providedIn: 'root'
@@ -43,3 +44,41 @@ export class ConfigService {
     }
   }
 }
+
+export function routerTransition() {
+  return slideToLeft();
+}
+
+export function routerTransitionToRight() {
+  return slideToLeft();
+}
+
+
+function slideToLeft() {
+  return trigger('routerTransition', [
+    transition(':enter', [
+      style({transform: 'translateX(100%)', position:'fixed', width:'100%'}),
+      animate('1s ease-in-out', style({transform: 'translateX(0%)'}))
+      ]),
+
+    transition(':leave', [
+      style({transform: 'translateY(100%)', position:'fixed', width:'100%'}),
+      animate('0s ease-in-out', style({transform: 'translateX(-100%)'}))
+      ])
+    ]);
+}
+
+function slideToRight() {
+  return trigger('routerTransition', [
+    transition(':leave', [
+      style({transform: 'translateX(100%)', position:'fixed', width:'100%'}),
+      animate('1s ease-in-out', style({transform: 'translateX(0%)'}))
+      ]),
+
+    transition(':enter', [
+      style({transform: 'translateY(100%)', position:'fixed', width:'100%'}),
+      animate('1s ease-in-out', style({transform: 'translateX(-100%)'}))
+      ])
+    ]);
+}
+

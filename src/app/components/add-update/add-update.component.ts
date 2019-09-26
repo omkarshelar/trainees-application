@@ -6,11 +6,15 @@ import { Student } from '../../mock-students';
 import { ActivatedRoute } from '@angular/router';
 import { ConfigService } from '../../services/config.service';
 import { ToastrService } from 'ngx-toastr';
+import { Location } from '@angular/common';
+import { routerTransition } from '../../services/config.service';
 
 @Component({
   selector: 'app-add-update',
   templateUrl: './add-update.component.html',
-  styleUrls: ['./add-update.component.css']
+  styleUrls: ['./add-update.component.css'],
+  animations: [routerTransition()],
+  host: {'[@routerTransition]': ''}
 })
 export class AddUpdateComponent implements OnInit {
   UserForms:FormGroup;
@@ -18,7 +22,7 @@ export class AddUpdateComponent implements OnInit {
   action:string;
   oldStudent:Student;
   btnName:string = "Add";
-  constructor(private studentServiceObj:StudentsService, private route: ActivatedRoute, private toastr: ToastrService, private router:Router) {
+  constructor(private studentServiceObj:StudentsService, private route: ActivatedRoute, private toastr: ToastrService, private router:Router, private location: Location) {
     this.id = this.route.snapshot.params['id'];
   }
 
@@ -50,7 +54,7 @@ export class AddUpdateComponent implements OnInit {
     else if(typeof this.id !== 'undefined') {
       if(this.UserForms.value.email === this.oldStudent.email) {
         //Give toaster here.
-        this.toastr.error("Trainee already exists","Ununsuccessful");
+        this.toastr.error("Trainee already exists","Unsuccessful");
       }
       else {
         this.studentServiceObj.updateStudent(this.oldStudent.id,this.UserForms.value.FirstName,this.UserForms.value.LastName,this.UserForms.value.email,this.UserForms.value.phone);
@@ -58,6 +62,10 @@ export class AddUpdateComponent implements OnInit {
         this.router.navigate(['']);
       }
     }
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }

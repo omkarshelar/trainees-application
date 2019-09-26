@@ -4,11 +4,14 @@ import { RouterModule ,Routes, Router} from "@angular/router";
 import { AuthService } from '../../services/auth.service';
 import { ConfigService } from '../../services/config.service';
 import { ToastrService } from 'ngx-toastr';
+import { routerTransition } from '../../services/config.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  animations: [routerTransition()],
+  host: {'[@routerTransition]': ''}
 })
 export class LoginComponent implements OnInit {
 

@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StudentsService } from '../../services/students.service';
+import { routerTransition } from '../../services/config.service';
 import { Student } from '../../mock-students';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-trainee-overview',
   templateUrl: './trainee-overview.component.html',
-  styleUrls: ['./trainee-overview.component.css']
+  styleUrls: ['./trainee-overview.component.css'],
+  animations: [routerTransition()],
+  host: {'[@routerTransition]': ''}
 })
 export class TraineeOverviewComponent implements OnInit {
   public showTable:boolean = true;
