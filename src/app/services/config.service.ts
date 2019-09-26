@@ -10,7 +10,7 @@ export class ConfigService {
 
   static validateEmail(control:AbstractControl):any {
     let emailRegEx = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/;
-    console.log(control.value);
+    //console.log(control.value);
     if(emailRegEx.test(control.value)) {
       // console.log("Valid!");
       return null;

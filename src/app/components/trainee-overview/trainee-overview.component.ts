@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StudentsService } from '../../services/students.service';
 import { Student } from '../../mock-students';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-trainee-overview',
@@ -11,7 +12,8 @@ import { Student } from '../../mock-students';
 export class TraineeOverviewComponent implements OnInit {
 
   students:Student[];
-  constructor(private studentServiceObj:StudentsService, private router:Router) { }
+  searchQuery = "";
+  constructor(private studentServiceObj:StudentsService, private router:Router, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.students = this.studentServiceObj.getStudents();
@@ -20,10 +22,17 @@ export class TraineeOverviewComponent implements OnInit {
     
   }
 
+  deleteHandler(id) {
+    if(confirm("Are you sure?")) {
+      this.deleteTrainee(id);
+    }
+  }
+
   deleteTrainee(id) {
     this.studentServiceObj.deleteStudent(id);
     this.students = this.studentServiceObj.getStudents();
     //Code for success toaster
+    this.toastr.success("Trainee Deleted","Delete Successful");
   }
 
   updateTrainee(id) {

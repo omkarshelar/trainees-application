@@ -12,8 +12,8 @@
     
     <div class="mt-0 pt-5">
         <div class="input-group flex-nowrap mb-3 w-25">
-            <label><i class="fa fa-search" aria-hidden="true"></i>Search:</label>
-            <input type="text" class="form-control" placeholder="Search">
+            <label id="iconLabel"><i class="fa fa-search" aria-hidden="true"></i>Search:</label>
+            <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchQuery">
         </div>
         <table>
                 <tr>
@@ -25,14 +25,14 @@
                         <th><i class="w3-medium custom-icon fa fa-pencil"></i> Update</th>
                         <th><i class="w3-medium custom-icon fa fa-trash"></i> Delete</th>
                     </tr>
-            <tr *ngFor="let student of students;let i = index">
+            <tr *ngFor="let student of students | search:searchQuery ;let i = index">
                 <td>{{i+1}}</td>
                 <td>{{ student.firstName }}</td>
                 <td>{{ student.lastName }}</td>
                 <td>{{ student.email }}</td>
-                <td>{{ student.phone }}</td>
+                <td>{{ student.phone | phone }}</td>
                 <td><button type="button" class="btn btn-success" (click)="updateTrainee(student.id)">Update</button></td>
-                <td><button type="button" class="btn btn-danger" (click)="deleteTrainee(student.id)">Delete</button></td>
+                <td><button type="button" class="btn btn-danger" (click)="deleteHandler(student.id)">Delete</button></td>
             </tr>
         </table>
 

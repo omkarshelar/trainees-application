@@ -26,9 +26,10 @@ export class Student {
 // ];
 
 export const STUDENTS_LIST: Student[] = [
-  new Student(1 ,'Omkar','Shelar','omkar@mail.com',9876543210),
-  new Student(2 ,'Student 1','lastName1','omkar@mail.com',9876543210),
-  new Student(3 ,'Student 2','lastName2','omkar@mail.com',9876543210),
-  new Student(4 ,'Student 3','lastName3','omkar@mail.com',9876543210),
-  new Student(5 ,'Student 4','lastName4','omkar@mail.com',9876543210)
+  new Student(1 ,'Omkar','Shelar','omkar@mail.com',8806512990),
+  new Student(2 ,'Naresh ','M','naresh@mail.com',9876543210),
+  new Student(3 ,'Dinesh','Roy','dinesh@mail.com',7776543210),
+  new Student(4 ,'Nikhil','K','nikhil@mail.com',8715671025),
+  new Student(5 ,'Admin','Administrator','example@mail.com',8451627149),
+  
 ];

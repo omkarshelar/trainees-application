@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router, private authServiceObj:AuthService,private toastr: ToastrService) { 
     //The flowwing line is a test line delete it.
-    toastr.error('Hello world!', 'Toastr fun!');
+    //toastr.error('Hello world!', 'Toastr fun!');
   }
 
   ngOnInit() {
@@ -29,10 +29,16 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    if(this.authServiceObj.authenticateUser(this.loginForm)) {
+    else {
+      let response = this.authServiceObj.authenticateUser(this.loginForm)
+      if(response.status == 200) {
+        localStorage.setItem('userData',JSON.stringify(response.data));
+        this.toastr.success('Trainee Details fetched',response.msg);
         this.router.navigate(['/']);
-    }else {
-      console.log("Invalid Login");
+      }
+      else {
+        this.toastr.error('Invalid Credentials', 'Failed');
+      }
     }
   }
 

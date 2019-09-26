@@ -5,6 +5,7 @@ import { StudentsService } from '../../services/students.service';
 import { Student } from '../../mock-students';
 import { ActivatedRoute } from '@angular/router';
 import { ConfigService } from '../../services/config.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-update',
@@ -17,7 +18,7 @@ export class AddUpdateComponent implements OnInit {
   action:string;
   oldStudent:Student;
   btnName:string = "Add";
-  constructor(private studentServiceObj:StudentsService, private route: ActivatedRoute) {
+  constructor(private studentServiceObj:StudentsService, private route: ActivatedRoute, private toastr: ToastrService, private router:Router) {
     this.id = this.route.snapshot.params['id'];
   }
 
@@ -43,15 +44,18 @@ export class AddUpdateComponent implements OnInit {
     if(typeof this.id === 'undefined') {
       let newStudent = new Student(this.studentServiceObj.getLatestId(),this.UserForms.value.FirstName,this.UserForms.value.LastName,this.UserForms.value.email,this.UserForms.value.phone)
       this.studentServiceObj.addStudent(newStudent);
-      alert("Added");
+      this.toastr.success("New trainee added","Added");
+      this.router.navigate(['/']);
     }
     else if(typeof this.id !== 'undefined') {
       if(this.UserForms.value.email === this.oldStudent.email) {
         //Give toaster here.
-        alert("Same Email. Trainee already exists");
+        this.toastr.error("Trainee already exists","Ununsuccessful");
       }
       else {
         this.studentServiceObj.updateStudent(this.oldStudent.id,this.UserForms.value.FirstName,this.UserForms.value.LastName,this.UserForms.value.email,this.UserForms.value.phone);
+        this.toastr.success("Trainee details updated","Updated");
+        this.router.navigate(['']);
       }
     }
   }

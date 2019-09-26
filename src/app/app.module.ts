@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/home/app.component';
@@ -11,6 +12,8 @@ import { TraineeDetailsComponent } from './components/trainee-details/trainee-de
 import { AddUpdateComponent } from './components/add-update/add-update.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PhonePipe } from './pipes/phone.pipe';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SidebarComponent,
     TraineeOverviewComponent,
     TraineeDetailsComponent,
-    AddUpdateComponent
+    AddUpdateComponent,
+    PhonePipe,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
@@ -30,7 +35,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       timeOut: 2000,
       positionClass: 'toast-bottom-right',
      // preventDuplicates: true,
-    })
+    }),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

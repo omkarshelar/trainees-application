@@ -13,11 +13,18 @@ export class AuthService implements CanActivate {
 
   authenticateUser(loginForm) {
     if(loginForm.value.email==='admin@mail.com' && loginForm.value.password==='Abc@123') {
-      localStorage.setItem('userData',JSON.stringify(loginForm.value));
-      return true;
+      return {
+        status:200,
+        msg:"Welcome",
+        data:loginForm.value
+      }
     }
     else {
-      return false;
+      return {
+        status:401,
+        msg:"Invalid Credentials",
+        data:null
+      }
     }
   }
 
