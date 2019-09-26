@@ -14,6 +14,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PhonePipe } from './pipes/phone.pipe';
 import { SearchPipe } from './pipes/search.pipe';
+import { HighlightDirective } from './directives/highlight.directive';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SearchPipe } from './pipes/search.pipe';
     TraineeDetailsComponent,
     AddUpdateComponent,
     PhonePipe,
-    SearchPipe
+    SearchPipe,
+    HighlightDirective,
   ],
   imports: [
     BrowserModule,

@@ -16,3 +16,8 @@ table {
   top:8px;
   margin-right: 5px;
 }
+
+.link {
+  cursor: pointer;
+  outline:none;
+}

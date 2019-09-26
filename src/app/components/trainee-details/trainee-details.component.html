@@ -1,1 +1,26 @@
-<p>trainee-details works!</p>
+<div class="w3-container" *ngIf="student">
+<h4>Student Details <button [routerLink]="['/update', id]" class="w3-button w3-blue custom-button"> <i class="w3-medium fa fa-pencil"></i> Edit</button> 
+<button routerLink="/" class="w3-button w3-green custom-button margin-right">
+<i class="w3-medium fa fa-chevron-left"></i> Back</button></h4>
+</div>
+<div class=" w3-card custom-card"><br>
+<h3 class="text-center">{{student.firstName}} {{student.lastName}}</h3>
+<hr>
+<table class="w3-table w3-bordered">
+<tr>                                                       
+<td><i class="w3-medium custom-icon fa fa-user"></i>First Name</td>                                                            
+ <td>: <b>{{student.firstName}}</b>
+</td>                                                
+ </tr>
+<tr>
+<td><i class="w3-medium custom-icon fa fa-user"></i>Last name</td>
+<td>: <b>{{student.lastName}}</b></td>
+</tr>                                             
+   <tr>                                             
+ <td><i class="w3-medium custom-icon fa fa-envelope-o"></i> Email Address</td>                                                               
+<td>: <b>{{student.email}}</b></td>                                                            
+</tr>                                              
+  <tr>                                           
+ <td><i class="w3-medium custom-icon fa fa-phone"></i> Phone</td>                                                               
+  <td>: <b>{{student.phone}}</b></td>                                                              
+</tr>

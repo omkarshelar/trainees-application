@@ -27,12 +27,12 @@
                                 <th><i class="w3-medium custom-icon fa fa-pencil"></i> Update</th>
                                 <th><i class="w3-medium custom-icon fa fa-trash"></i> Delete</th>
                             </tr>
-                    <tr *ngFor="let student of students;let i = index">
-                        <td>{{i+1}}</td>
-                        <td>{{ student.firstName }}</td>
-                        <td>{{ student.lastName }}</td>
-                        <td>{{ student.email }}</td>
-                        <td>{{ student.phone | phone }}</td>
+                    <tr *ngFor="let student of students;let i = index" appHighlight>
+                        <td [routerLink] = "['details',student.id]" class="link">{{i+1}}</td>
+                        <td [routerLink] = "['details',student.id]" class="link">{{ student.firstName }}</td>
+                        <td [routerLink] = "['details',student.id]" class="link">{{ student.lastName }}</td>
+                        <td [routerLink] = "['details',student.id]" class="link">{{ student.email }}</td>
+                        <td [routerLink] = "['details',student.id]" class="link">{{ student.phone | phone }}</td>
                         <td><button type="button" class="btn btn-success" (click)="updateTrainee(student.id)">Update</button></td>
                         <td><button type="button" class="btn btn-danger" (click)="deleteHandler(student.id)">Delete</button></td>
                     </tr>

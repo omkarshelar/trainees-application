@@ -1,15 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute } from '@angular/router';
+import { RouterModule ,Routes, Router} from "@angular/router";
+import { StudentsService } from '../../services/students.service';
+import { Student } from '../../mock-students';
 @Component({
   selector: 'app-trainee-details',
   templateUrl: './trainee-details.component.html',
   styleUrls: ['./trainee-details.component.css']
 })
 export class TraineeDetailsComponent implements OnInit {
-
-  constructor() { }
+  id:number;
+  student:Student;
+  constructor(private studentServiceObj:StudentsService, private route: ActivatedRoute, private router:Router) {
+    this.id = this.route.snapshot.params['id'];
+  }
 
   ngOnInit() {
+    if(this.id) {
+      this.student = this.studentServiceObj.getStudents(this.id)[0];
+    }
   }
 
 }
