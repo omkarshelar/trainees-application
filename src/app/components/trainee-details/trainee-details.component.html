@@ -1,8 +1,11 @@
-<div class="w3-container" *ngIf="student">
-<h4>Student Details <button [routerLink]="['/update', id]" class="w3-button w3-blue custom-button"> <i class="w3-medium fa fa-pencil"></i> Edit</button> 
-<button routerLink="/" class="w3-button w3-green custom-button margin-right">
-<i class="w3-medium fa fa-chevron-left"></i> Back</button></h4>
+<div class="w3-container d-flex mt-2 mb-5 bg-primary pt-3" *ngIf="student">
+  <h1 style="position:relative;bottom:10px">Student Details</h1>
+  <div class="ml-auto">
+    <button [routerLink]="['/update', id]" class="w3-button w3-blue custom-button mr-3"> <i class="w3-medium fa fa-pencil"></i> Edit</button> 
+    <button routerLink="/" class="w3-button w3-green custom-button"><i class="w3-medium fa fa-chevron-left"></i> Back</button>
+  </div>
 </div>
+
 <div class=" w3-card custom-card"><br>
 <h3 class="text-center">{{student.firstName}} {{student.lastName}}</h3>
 <hr>
@@ -22,5 +25,7 @@
 </tr>                                              
   <tr>                                           
  <td><i class="w3-medium custom-icon fa fa-phone"></i> Phone</td>                                                               
-  <td>: <b>{{student.phone}}</b></td>                                                              
+  <td>: <b>{{student.phone | phone}}</b></td>                                                              
 </tr>
+</table>
+</div>

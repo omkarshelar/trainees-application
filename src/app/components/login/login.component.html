@@ -15,9 +15,9 @@
                     <div *ngIf="!loginForm.controls['password'].hasError('required') && loginForm.controls['password'].invalid" class="bg-danger mt-2 text-light">Password should contain atleast <br>
                     - One UpperCase letter<br>
                     - One LowerCase letter<br>
-                    - Special characters<br>
+                    - Special characters(except spaces)<br>
                     - One digit<br>
-                    -Should be atleast 6 characters<br></div>
+                    -Should be atleast 5 characters<br></div>
                 
                     <button class="w3-btn w3-green mt-2" type="submit" [disabled]="!loginForm.valid">Login</button>
                 
@@ -26,7 +26,7 @@
 
     <div class="container w3-gray mb-5">
         <h4>Notes : </h4><br>
-        <p>Credentials : admin@mail.com Password: admin123</p><br>
+        <p>Credentials : admin@mail.com Password: Abc@123</p><br>
         <p>All data will be restored when refreshed</p><br>
     </div>
 </div>

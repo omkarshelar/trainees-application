@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
 import { Router } from '@angular/router';
+import {  } from './students.service'
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,7 @@ export class AuthService implements CanActivate {
   }
 
   logoutCurrentUser() {
-    localStorage.removeItem('userData');
+    localStorage.clear();
   }
 
   isLoggedIn() {

@@ -4,7 +4,7 @@
         <a class="navbar-brand text-light">Trainees List</a>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <button [routerLink]="['/add']" class="btn btn-success float-right">Add New Trainee</button>
+                <button [routerLink]="['/add']" class="btn btn-success float-right"><i class="w3-medium custom-icon fa fa-plus"></i> Add New Trainee</button>
             </li>
         </ul>
     </nav>
@@ -13,7 +13,7 @@
     <div class="mt-0 pt-5">
         <div class="input-group flex-nowrap mb-3 w-25">
             <label id="iconLabel"><i class="fa fa-search" aria-hidden="true"></i>Search:</label>
-            <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchQuery">
+            <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchQuery" [disabled]="!students.length">
         </div>
         <div *ngIf="(students | search:searchQuery) as students">
             <div *ngIf="students.length">
@@ -28,19 +28,24 @@
                                 <th><i class="w3-medium custom-icon fa fa-trash"></i> Delete</th>
                             </tr>
                     <tr *ngFor="let student of students;let i = index" appHighlight>
-                        <td [routerLink] = "['details',student.id]" class="link">{{i+1}}</td>
-                        <td [routerLink] = "['details',student.id]" class="link">{{ student.firstName }}</td>
-                        <td [routerLink] = "['details',student.id]" class="link">{{ student.lastName }}</td>
-                        <td [routerLink] = "['details',student.id]" class="link">{{ student.email }}</td>
-                        <td [routerLink] = "['details',student.id]" class="link">{{ student.phone | phone }}</td>
+                        <td [routerLink] = "['details',student.id]" class="link" (click)="showClickToaster(student)">{{i+1}}</td>
+                        <td [routerLink] = "['details',student.id]" class="link" (click)="showClickToaster(student)">{{ student.firstName }}</td>
+                        <td [routerLink] = "['details',student.id]" class="link" (click)="showClickToaster(student)">{{ student.lastName }}</td>
+                        <td [routerLink] = "['details',student.id]" class="link" (click)="showClickToaster(student)">{{ student.email }}</td>
+                        <td [routerLink] = "['details',student.id]" class="link" (click)="showClickToaster(student)">{{ student.phone | phone }}</td>
                         <td><button type="button" class="btn btn-success" (click)="updateTrainee(student.id)">Update</button></td>
                         <td><button type="button" class="btn btn-danger" (click)="deleteHandler(student.id)">Delete</button></td>
                     </tr>
                 </table>
             </div>
-            <div *ngIf="!students.length">
+            <div *ngIf="!students.length && searchQuery.length!=0">
                 <div class="alert alert-success">
                     <strong>No Results!</strong><br>No results found for query {{ searchQuery }}
+                </div>
+            </div>
+            <div *ngIf="!students.length && searchQuery.length==0">
+                <div class="alert alert-success">
+                    <strong>No Results!</strong><br>Please add new students
                 </div>
             </div>
         </div>

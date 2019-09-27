@@ -43,4 +43,7 @@ export class TraineeOverviewComponent implements OnInit {
     this.router.navigate(['/update',id]);
   }
 
+  showClickToaster(student:Student) {
+    this.toastr.success("Details for "+student.firstName,"Trainee Details");
+  }
 }

@@ -17,15 +17,15 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private router: Router, private authServiceObj:AuthService,private toastr: ToastrService) { 
+  constructor(private router: Router, private authServiceObj:AuthService,private toastr: ToastrService) {
     //The flowwing line is a test line delete it.
     //toastr.error('Hello world!', 'Toastr fun!');
   }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
-      email: new FormControl(null,[Validators.required, ConfigService.validateEmail]),
-      password: new FormControl(null,[Validators.required, ConfigService.validatePassword]),
+      email: new FormControl("admin@mail.com",[Validators.required, ConfigService.validateEmail]),
+      password: new FormControl("Abc@123",[Validators.required, ConfigService.validatePassword]),
     });
   }
   onSubmit() {
