@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       let response = this.authServiceObj.authenticateUser(this.loginForm)
       if(response.status == 200) {
         localStorage.setItem('userData',JSON.stringify(response.data));
-        this.toastr.success('Trainee Details fetched',response.msg);
+        this.toastr.success('Trainee List fetched',response.msg);
         this.router.navigate(['/']);
       }
       else {

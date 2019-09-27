@@ -44,6 +44,6 @@ export class TraineeOverviewComponent implements OnInit {
   }
 
   showClickToaster(student:Student) {
-    this.toastr.success("Details for "+student.firstName,"Trainee Details");
+    this.toastr.success("Details for "+student.firstName,"Trainee Details Fetched");
   }
 }

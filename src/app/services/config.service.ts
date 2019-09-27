@@ -43,6 +43,13 @@ export class ConfigService {
       return { validPhone: false };
     }
   }
+  static validateName(control:AbstractControl):any {
+    let nameRegEx = /^[A-Za-z\s]+$/;
+    if(nameRegEx.test(control.value))
+      return null;
+    else
+      return { validName:false };
+  }
 }
 
 export function routerTransition() {

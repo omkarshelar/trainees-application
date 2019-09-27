@@ -37,8 +37,8 @@ export class AddUpdateComponent implements OnInit {
     }
     // console.log(student);
     this.UserForms = new FormGroup({
-      FirstName: new FormControl(this.oldStudent.firstName,[Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
-      LastName: new FormControl(this.oldStudent.lastName,[Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
+      FirstName: new FormControl(this.oldStudent.firstName,[Validators.required, Validators.minLength(3), Validators.maxLength(50),ConfigService.validateName]),
+      LastName: new FormControl(this.oldStudent.lastName,[Validators.required, Validators.minLength(3), Validators.maxLength(50),ConfigService.validateName]),
       email: new FormControl(this.oldStudent.email,[Validators.required, ConfigService.validateEmail]),
       phone: new FormControl(this.oldStudent.phone,[Validators.required,ConfigService.validatePhone]),
     });
@@ -54,7 +54,7 @@ export class AddUpdateComponent implements OnInit {
     else if(typeof this.id !== 'undefined') {
       if(this.UserForms.value.email === this.oldStudent.email) {
         //Give toaster here.
-        this.toastr.error("Trainee already exists","Unsuccessful");
+        this.toastr.error("Email already exists","Unsuccessful");
       }
       else {
         this.studentServiceObj.updateStudent(this.oldStudent.id,this.UserForms.value.FirstName,this.UserForms.value.LastName,this.UserForms.value.email,this.UserForms.value.phone);

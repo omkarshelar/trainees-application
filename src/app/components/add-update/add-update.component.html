@@ -15,7 +15,7 @@
 
       <label class="w3-text-blue" ><i class="w3-medium custom-icon fa fa-user"></i> <b> First Name</b></label><br>
       <input  type="text" formControlName="FirstName" class="form-control"><br>
-      <div  class="bg-danger"  *ngIf="UserForms.controls.FirstName.invalid && (UserForms.controls.FirstName.dirty || UserForms.controls.FirstName.touched)">Please enter 3 to 50 characters</div> <br>
+      <div  class="bg-danger"  *ngIf="UserForms.controls.FirstName.invalid && (UserForms.controls.FirstName.dirty || UserForms.controls.FirstName.touched)">Please enter 3 to 50 characters. No numbers allowed</div> <br>
 
       <label class="w3-text-blue"><i class="w3-medium custom-icon fa fa-user"></i><b> Last Name</b></label><br>
       <input  type="text" formControlName="LastName" class="form-control"><br>
