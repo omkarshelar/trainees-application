@@ -19,7 +19,7 @@
 
       <label class="w3-text-blue"><i class="w3-medium custom-icon fa fa-user"></i><b> Last Name</b></label><br>
       <input  type="text" formControlName="LastName" class="form-control"><br>
-      <div  class="bg-danger" *ngIf="UserForms.controls.LastName.invalid && (UserForms.controls.LastName.dirty || UserForms.controls.LastName.touched)">Please enter  3 to 50 characters </div> <br>
+      <div  class="bg-danger" *ngIf="UserForms.controls.LastName.invalid && (UserForms.controls.LastName.dirty || UserForms.controls.LastName.touched)">Please enter  3 to 50 characters.No numbers allowed</div> <br>
 
       <label class="w3-text-blue" ><i class="w3-medium custom-icon fa fa-envelope"></i><b> Email Address</b></label><br>
       <input  type="text" formControlName="email" class="form-control"><br>

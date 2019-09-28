@@ -36,7 +36,6 @@ import { HighlightDirective } from './directives/highlight.directive';
     ToastrModule.forRoot({
       timeOut: 2000,
       positionClass: 'toast-bottom-right',
-     // preventDuplicates: true,
     }),
     FormsModule
   ],

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
-import { trigger, state, animate, style, transition } from '@angular/animations';
+import { trigger, animate, style, transition } from '@angular/animations';
 
 
 /*
@@ -72,11 +72,6 @@ function slideToLeft() {
       style({transform: 'translateX(100%)', position:'fixed', width:'100%'}),
       animate('1s ease-in-out', style({transform: 'translateX(0%)'}))
       ]),
-
-    transition(':leave', [
-      style({transform: 'translateY(100%)', position:'fixed', width:'100%'}),
-      animate('0s ease-in-out', style({transform: 'translateX(-100%)'}))
-      ])
     ]);
 }
 

@@ -13,19 +13,14 @@ import { STUDENTS_LIST } from '../mock-students';
 export class StudentsService {
   students:Student[];
 
-  /*
-   * The student data is loaded in instance variable when the user is logged in. The local storage is also set.
-   */
-  constructor() { 
-    this.students = JSON.parse(localStorage.getItem("students_list")) || STUDENTS_LIST; // Read the data from localStorage. If not found, 
-    this.writeToLocalStorage();
+  constructor() {
   }
 
   /*
    * Utility function to write the students list to the local storage.
    */
-  writeToLocalStorage() {
-    localStorage.setItem("students_list",JSON.stringify(this.students))
+  writeToLocalStorage(students) {
+    localStorage.setItem("students_list",JSON.stringify(students))
   }
 
   /*
@@ -34,25 +29,28 @@ export class StudentsService {
    * ID is an optional parameter. If not provided, the full list of students is fetched.
    */
   getStudents(id?:number) {
+    let students = JSON.parse(localStorage.getItem("students_list"));
     if(typeof id !== 'undefined') {
-      return this.students.filter((element:Student)=>element.id == id);
+      return students.filter((element:Student)=>element.id == id);
     }
-    return this.students;
+    return students;
   }
 
   /*
    * Add a new student to instance variable and write to local storage
    */
   addStudent(newStudent:Student) {
-    this.students.push(newStudent);
-    this.writeToLocalStorage();
+    let students = this.getStudents();
+    students.push(newStudent);
+    this.writeToLocalStorage(students);
   }
 
   /*
    * Get the latest ID by finding the maximum of the IDs and adding one.
    */
   getLatestId():number {
-    let maxId:number = this.students.reduce((max, currentValue)=>max>currentValue.id?max:currentValue.id, -1);
+    let students = this.getStudents()
+    let maxId:number = students.reduce((max, currentValue)=>max>currentValue.id?max:currentValue.id, -1);
     return maxId+1;
   }
 
@@ -60,29 +58,30 @@ export class StudentsService {
    * Delete student of the given ID and write to local storage.
    */
   deleteStudent(id:number) {
-    this.students = this.students.filter((student)=>student.id!=id);
-    this.writeToLocalStorage();
+    let students = this.getStudents();
+    students = students.filter((student)=>student.id!=id);
+    this.writeToLocalStorage(students);
   }
 
   /*
-   * Called during logout. The students data is removed from the local storage.
-   * Reset the data so next login will have the original data.
+   * Reset students to ensure that after logout, the students list is blank.
    */
-  deleteStudentsDB() {
-    localStorage.removeItem("students_list");
-    this.students = STUDENTS_LIST;
+  resetStudents() {
+    let students = STUDENTS_LIST;
+    this.writeToLocalStorage(students);
   }
 
   /*
    * Update student, pass the ID of the student to be updated. The new values of the student object are passed as parameters.
    */
   updateStudent(id:number, firstName:string, lastName:string, email:string, phone:number) {
-    let oldStudent = this.students.filter((student)=>student.id==id)[0];
+    let students = this.getStudents()
+    let oldStudent = students.filter((student)=>student.id==id)[0];
     oldStudent.firstName = firstName;
     oldStudent.lastName = lastName;
     oldStudent.email = email;
     oldStudent.phone = phone;
-    this.writeToLocalStorage();
+    this.writeToLocalStorage(students);
   }
 
 }

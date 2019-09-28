@@ -20,6 +20,9 @@ export class TraineeDetailsComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
   }
 
+  /*
+   * Get the trainee from the service adn set to instance variable for interpolation.
+   */
   ngOnInit() {
     if(this.id) {
       this.student = this.studentServiceObj.getStudents(this.id)[0];
