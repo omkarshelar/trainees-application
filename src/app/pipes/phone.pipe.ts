@@ -1,5 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+/*
+ * +91 to any given number.
+ */
 @Pipe({
   name: 'phone'
 })

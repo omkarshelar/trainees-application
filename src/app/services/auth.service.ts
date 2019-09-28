@@ -10,8 +10,11 @@ export class AuthService implements CanActivate {
 
   constructor(private router: Router) {
   }
-  
 
+/* 
+ * Function to authenticate user at login.
+ * The message returned is used in toaster.
+ */
   authenticateUser(loginForm) {
     if(loginForm.value.email==='admin@mail.com' && loginForm.value.password==='Abc@123') {
       return {
@@ -29,10 +32,16 @@ export class AuthService implements CanActivate {
     }
   }
 
+  /*
+   * Clear local storage on logout.
+   */
   logoutCurrentUser() {
     localStorage.clear();
   }
 
+ /*
+  * Check if the user is logged in using localStorage
+  */
   isLoggedIn() {
     if(localStorage.getItem('userData')) {
       return true;
@@ -41,6 +50,11 @@ export class AuthService implements CanActivate {
       return false;
     }
   }
+
+/*
+ * CanActivate used in routing
+ * Protect  all routes except /login
+ */
   canActivate():boolean {
     if(!this.isLoggedIn()) {
       this.router.navigateByUrl('/login');

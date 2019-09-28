@@ -35,7 +35,6 @@ export class TraineeOverviewComponent implements OnInit {
   deleteTrainee(id) {
     this.studentServiceObj.deleteStudent(id);
     this.students = this.studentServiceObj.getStudents();
-    //Code for success toaster
     this.toastr.success("Trainee Deleted","Delete Successful");
   }
 

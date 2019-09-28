@@ -1,5 +1,8 @@
 import { Directive, ElementRef, HostListener  } from '@angular/core';
 
+/*
+ * Directive to change background on the table row hover. Added the directive as appHighlight in trainee-overview.
+ */
 @Directive({
   selector: '[appHighlight]'
 })
@@ -9,7 +12,7 @@ export class HighlightDirective {
   }
 
   @HostListener('mouseenter') onMouseEnter() {
-  this.highlight('gray');
+    this.highlight('gray');
   }
 
   @HostListener('mouseleave') onMouseLeave() {
