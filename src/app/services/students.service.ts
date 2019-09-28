@@ -29,7 +29,7 @@ export class StudentsService {
    * ID is an optional parameter. If not provided, the full list of students is fetched.
    */
   getStudents(id?:number) {
-    let students = JSON.parse(localStorage.getItem("students_list"));
+    let students = JSON.parse(localStorage.getItem("students_list")) ||[];
     if(typeof id !== 'undefined') {
       return students.filter((element:Student)=>element.id == id);
     }
@@ -63,13 +63,6 @@ export class StudentsService {
     this.writeToLocalStorage(students);
   }
 
-  /*
-   * Reset students to ensure that after logout, the students list is blank.
-   */
-  resetStudents() {
-    let students = STUDENTS_LIST;
-    this.writeToLocalStorage(students);
-  }
 
   /*
    * Update student, pass the ID of the student to be updated. The new values of the student object are passed as parameters.
