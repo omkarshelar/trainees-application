@@ -22,7 +22,7 @@ export class Student {
  */
 export const STUDENTS_LIST: Student[] = [
   new Student(1 ,'Omkar','Shelar','omkar@mail.com',8806512990),
-  new Student(2 ,'Shrutik ','Chaudhary','naresh@mail.com',9876543210),
+  new Student(2 ,'Shrutik','Chaudhary','shrutik@mail.com',9876543210),
   new Student(3 ,'Dinesh','Roy','dinesh@mail.com',7776543210),
   new Student(4 ,'Nikhil','Korrakuti','nikhil@mail.com',8715671025),
   new Student(5 ,'Admin','Administrator','example@mail.com',8451627149),

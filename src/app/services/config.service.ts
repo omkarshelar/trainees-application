@@ -28,7 +28,7 @@ export class ConfigService {
   }
 
   static validatePassword(control:AbstractControl):any {
-    let passwordRegEx = /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{5,}$/;
+    let passwordRegEx = /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W|_]){1,}).{5,}$/;
     if(passwordRegEx.test(control.value)) {
       // console.log("Valid!");
       return null;
